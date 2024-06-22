@@ -1,26 +1,15 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[5]:
-
-
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
 from matplotlib import colors as mcolors
+import sys
 
-
-# In[11]:
-
-
-dataset = pd.read_excel("CO2_XDATCAR.xlsx")
+#*XDATCAR.xlsx file as input to the script
+input_file = sys.argv[1]
+dataset = pd.read_excel(input_file)
 dataset = dataset.fillna(0)
 
-
-# In[12]:
-
-
-#Lattice Parameters in Angstrom
+#lattice Parameters in Angstrom
 a = (dataset.iloc[[0], :]).values.tolist()[0][0]
 b = (dataset.iloc[[1], :]).values.tolist()[0][1]
 c = (dataset.iloc[[2], :]).values.tolist()[0][2]
@@ -43,17 +32,13 @@ if (len(X) != len(Y)):
 if (len(X) != len(Z)):
     print("Check Input File. Coordinates missing/extra!")
 
-#Frames in dynamic simualtion
+#frames in dynamic simualtion
 number_of_frames = math.floor(len(X)/sum(number_of_atom))
 
-#atom numbers for tracking the bond distance
-atom_number_one = 0
-atom_number_two = 100
-atom_number_three = 101
-
-
-# In[13]:
-
+#atom numbers as input to the script for tracking the bond angle
+atom_number_one = int(sys.argv[2])
+atom_number_two = int(sys.argv[3])
+atom_number_three = int(sys.argv[4])
 
 periodic_distance1 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 periodic_distance2 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
@@ -76,25 +61,13 @@ for frames in range(number_of_frames):
     distance3 = min(min(min(periodic_distance3)))
     angle += [math.degrees(math.acos(((distance1**2) + (distance3**2) - (distance2**2))/(2*distance1*distance3)))]
     avg_angle += [sum(angle)/len(angle)]
-    
-
-
-# In[14]:
-
 
 fig = plt.figure(figsize=(10, 4))
-
-fig = plt.subplot(1, 2, 1)
 plt.plot(angle, color = "darkgrey")
 plt.plot(avg_angle, "lightcoral", label = "Average", linewidth = 3)
 plt.xlabel('Number of Frames')
 plt.xlim([0, number_of_frames])
 plt.ylabel('O-C-O bond angle for CO2 Radical Anion in degrees ')
 plt.legend(loc="upper right")
-
-
-# In[ ]:
-
-
-
-
+output_file = sys.argv[5]
+plt.savefig(output_file)
