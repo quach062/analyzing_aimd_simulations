@@ -16,18 +16,15 @@ c = (dataset.iloc[[2], :]).values.tolist()[0][2]
 
 #atoms and number of atoms
 atom = (dataset.iloc[[3], :]).values.tolist()[0]
-
 number_of_atom = (dataset.iloc[[4], :]).values.tolist()[0]
 
 #coordinates
-
 X = (dataset.iloc[5:,[0]]).values.tolist()
 Y = (dataset.iloc[5:,[1]]).values.tolist()
 Z = (dataset.iloc[5:,[2]]).values.tolist()
 
 if (len(X) != len(Y)):
     print("Check Input File. Coordinates missing/extra!")
-
 
 if (len(X) != len(Z)):
     print("Check Input File. Coordinates missing/extra!")
