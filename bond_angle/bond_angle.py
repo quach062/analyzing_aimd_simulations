@@ -1,7 +1,6 @@
 import pandas as pd
 import math
 import matplotlib.pyplot as plt
-from matplotlib import colors as mcolors
 import sys
 
 #*XDATCAR.xlsx file as input to the script
@@ -23,26 +22,56 @@ X = (dataset.iloc[5:,[0]]).values.tolist()
 Y = (dataset.iloc[5:,[1]]).values.tolist()
 Z = (dataset.iloc[5:,[2]]).values.tolist()
 
+#raising errors for invalid input file
 if (len(X) != len(Y)):
     print("Check Input File. Coordinates missing/extra!")
+    sys.exit()
 
 if (len(X) != len(Z)):
     print("Check Input File. Coordinates missing/extra!")
+    sys.exit()
 
 #frames in dynamic simualtion
 number_of_frames = math.floor(len(X)/sum(number_of_atom))
 
-#atom numbers as input to the script for tracking the bond angle
-atom_number_one = int(sys.argv[2])
-atom_number_two = int(sys.argv[3])
-atom_number_three = int(sys.argv[4])
+#raising errors for missing frame data
+if ((len(X)/sum(number_of_atom)) > number_of_frames):
+    print("Missing data in the last frame!")
+    sys.exit()
 
+#atom numbers as input to the script for tracking the bond angle
+atom_number_one = int(sys.argv[2]) - 1
+atom_number_two = int(sys.argv[3]) - 1
+atom_number_three = int(sys.argv[4]) - 1
+
+#raising errors for invalid atom indexes
+if (atom_number_one > sum(number_of_atom) - 1):
+    print("Atom One Index Out Of Range")
+    sys.exit()
+elif (atom_number_one < 0):
+    print("Invalid Atom One Index")
+    sys.exit()
+if (atom_number_two > sum(number_of_atom) - 1):
+    print("Atom Two Index Out Of Range")
+    sys.exit()
+elif (atom_number_two < 0):
+    print("Invalid Atom Two Index")
+    sys.exit()
+if (atom_number_three > sum(number_of_atom) - 1):
+    print("Atom Three Index Out Of Range")
+    sys.exit()
+elif (atom_number_three < 0):
+    print("Invalid Atom Three Index")
+    sys.exit()
+
+#initializing distances and angles
 periodic_distance1 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 periodic_distance2 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 periodic_distance3 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 angle =     []
 avg_angle = []
 
+#calculating distances and angles
 for frames in range(number_of_frames):
     x_atom1, y_atom1, z_atom1 = X[frames*sum(number_of_atom) + atom_number_one][0], Y[frames*sum(number_of_atom) + atom_number_one][0], Z[frames*sum(number_of_atom) + atom_number_one][0]
     x_atom2, y_atom2, z_atom2 = X[frames*sum(number_of_atom) + atom_number_two][0], Y[frames*sum(number_of_atom) + atom_number_two][0], Z[frames*sum(number_of_atom) + atom_number_two][0]
@@ -59,6 +88,7 @@ for frames in range(number_of_frames):
     angle += [math.degrees(math.acos(((distance1**2) + (distance3**2) - (distance2**2))/(2*distance1*distance3)))]
     avg_angle += [sum(angle)/len(angle)]
 
+#plotting and printing output
 fig = plt.figure(figsize=(10, 4))
 plt.plot(angle, color = "darkgrey")
 plt.plot(avg_angle, "lightcoral", label = "Average", linewidth = 3)
