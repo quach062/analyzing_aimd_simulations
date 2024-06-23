@@ -94,7 +94,7 @@ plt.plot(angle, color = "darkgrey")
 plt.plot(avg_angle, "lightcoral", label = "Average", linewidth = 3)
 plt.xlabel('Number of Frames')
 plt.xlim([0, number_of_frames])
-plt.ylabel('O-C-O bond angle for CO2 Radical Anion in degrees ')
+plt.ylabel(f"Bond Angle between Atom {atom_number_one + 1}, Atom {atom_number_two + 1}, and Atom {atom_number_three + 1} \n in degrees")
 plt.legend(loc="upper right")
 output_file = sys.argv[5]
 plt.savefig(output_file)
