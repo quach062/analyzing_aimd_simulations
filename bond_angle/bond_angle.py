@@ -8,7 +8,7 @@ input_file = sys.argv[1]
 dataset = pd.read_excel(input_file)
 dataset = dataset.fillna(0)
 
-#lattice Parameters in Angstrom
+#lattice parameters in angstrom
 a = (dataset.iloc[[0], :]).values.tolist()[0][0]
 b = (dataset.iloc[[1], :]).values.tolist()[0][1]
 c = (dataset.iloc[[2], :]).values.tolist()[0][2]
