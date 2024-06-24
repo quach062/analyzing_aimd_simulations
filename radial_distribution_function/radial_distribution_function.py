@@ -3,8 +3,6 @@ import numpy as np
 import math
 import scipy.stats as st
 import matplotlib.pyplot as plt
-import seaborn as sns
-from matplotlib import colors as mcolors
 import sys
 
 #*XDATCAR.xlsx file as input to the script
@@ -12,7 +10,7 @@ input_file = sys.argv[1]
 dataset = pd.read_excel(input_file)
 dataset = dataset.fillna(0)
 
-#lattice Parameters in Angstrom
+#lattice parameters in angstrom
 a = (dataset.iloc[[0], :]).values.tolist()[0][0]
 b = (dataset.iloc[[1], :]).values.tolist()[0][1]
 c = (dataset.iloc[[2], :]).values.tolist()[0][2]
@@ -37,12 +35,27 @@ if (len(X) != len(Z)):
 #frames in dynamic simualtion
 number_of_frames = math.floor(len(X)/sum(number_of_atom))
 
+#raising errors for missing frame data
+if ((len(X)/sum(number_of_atom)) > number_of_frames):
+    print("Missing data in the last frame!")
+    sys.exit()
+
 #reference atom as input for the script
 index_reference_atom = int(sys.argv[2]) - 1
 
+#raising errors for invalid atom indexes
+if (index_reference_atom > sum(number_of_atom) - 1):
+    print("Reference Atom Index Out Of Range")
+    sys.exit()
+elif (index_reference_atom < 0):
+    print("Invalid Reference Atom Index")
+    sys.exit()
+
+#initializing distances
 periodic_distance = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 distance =     [[0 for j in range(sum(number_of_atom))] for i in range(number_of_frames)]
 
+#calculating distances
 for frames in range(number_of_frames):
     x_reference_atom, y_reference_atom, z_reference_atom = X[frames*sum(number_of_atom) + index_reference_atom][0], Y[frames*sum(number_of_atom) + index_reference_atom][0], Z[frames*sum(number_of_atom) + index_reference_atom][0]
     for index_target_atom in range(sum(number_of_atom)):
