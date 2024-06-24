@@ -75,6 +75,9 @@ elif (atom_number_four < 0):
 periodic_distance1 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 periodic_distance2 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 periodic_distance3 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
+periodic_distance4 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
+periodic_distance5 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
+periodic_distance6 = [[[0 for k in range(3)] for j in range(3)] for i in range(3)]
 dihedral_angle =     []
 avg_dihedral_angle = []
 
@@ -88,12 +91,25 @@ for frames in range(number_of_frames):
         for n in range(-1, 2):
             for o in range(-1, 2):
                 periodic_distance1[m+1][n+1][o+1] = math.dist((x_atom1*a, y_atom1*b, z_atom1*c), ((x_atom2 + m)*a, (y_atom2 + n)*b, (z_atom2 + o)*c))
-                periodic_distance2[m+1][n+1][o+1] = math.dist((x_atom3*a, y_atom3*b, z_atom3*c), ((x_atom4 + m)*a, (y_atom4 + n)*b, (z_atom4 + o)*c))
-                periodic_distance3[m+1][n+1][o+1] = math.dist((x_atom1*a, y_atom1*b, z_atom1*c), ((x_atom4 + m)*a, (y_atom4 + n)*b, (z_atom4 + o)*c))
+                periodic_distance2[m+1][n+1][o+1] = math.dist((x_atom2*a, y_atom2*b, z_atom2*c), ((x_atom3 + m)*a, (y_atom3 + n)*b, (z_atom3 + o)*c))
+                periodic_distance3[m+1][n+1][o+1] = math.dist((x_atom3*a, y_atom3*b, z_atom3*c), ((x_atom1 + m)*a, (y_atom1 + n)*b, (z_atom1 + o)*c))
+                periodic_distance4[m+1][n+1][o+1] = math.dist((x_atom4*a, y_atom4*b, z_atom4*c), ((x_atom1 + m)*a, (y_atom1 + n)*b, (z_atom1 + o)*c))
+                periodic_distance5[m+1][n+1][o+1] = math.dist((x_atom4*a, y_atom4*b, z_atom4*c), ((x_atom3 + m)*a, (y_atom3 + n)*b, (z_atom3 + o)*c))
+                periodic_distance6[m+1][n+1][o+1] = math.dist((x_atom4*a, y_atom4*b, z_atom4*c), ((x_atom2 + m)*a, (y_atom2 + n)*b, (z_atom2 + o)*c))
     distance1 = min(min(min(periodic_distance1)))
     distance2 = min(min(min(periodic_distance2)))
     distance3 = min(min(min(periodic_distance3)))
-    dihedral_angle += [math.degrees(math.acos(((distance2**2) + (distance1**2) - (distance3**2))/(2*distance1*distance2)))]
+    distance4 = min(min(min(periodic_distance4)))
+    distance5 = min(min(min(periodic_distance5)))
+    distance6 = min(min(min(periodic_distance6)))
+    alpha = math.acos(((distance1**2) + (distance3**2) - (distance2**2))/(2*distance1*distance3))
+    p1 = (0, 0, 0)
+    p2 = (distance1*math.cos(alpha), distance1*math.sin(alpha), 0)
+    p3 = (distance3, 0, 0)
+    x = (((distance3**2) + (distance4**2) - (distance5**2))/(2*distance3))
+    y = (((p2[0]**2) + (p2[1]**2) + (distance4**2) - (distance6**2) -2*x*p2[0])/(2*p2[1]))
+    z = math.sqrt((distance4**2) - (x**2) - (y**2))
+    dihedral_angle += [math.degrees(math.asin(z/distance5))]
     avg_dihedral_angle += [sum(dihedral_angle)/len(dihedral_angle)]
 
 #plotting and printing output
