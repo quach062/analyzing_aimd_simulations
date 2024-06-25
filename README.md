@@ -36,7 +36,7 @@ radial_distribution_function.py generates a reference atom's probability and rad
 
 ```python radial_distribution_function.py *XDATCAR.xlsx atom1 frame1 grid1 OUTPUT1.png OUTPUT2.png OUTPUT3.png```
 
-Here, atom1 is the reference atom for creating the radial distribution function, frame1 is the index for the instantaneous, grid1 is the gridpoint size for generating the distribution, and the three OUTPUT files give instantaneous and average distribution functions. *XDATCAR.xlsx is the input file.
+Here, atom1 is the reference atom for creating the radial distribution function, frame1 is the frame index for the instantaneous rdf of the particular frame, grid1 is the gridpoint size for generating the distributions, and the three OUTPUT files give instantaneous and average distribution functions. *XDATCAR.xlsx is the input file.
 
 # Authors
 Mayank Tanwar
