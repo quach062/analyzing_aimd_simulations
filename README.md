@@ -24,7 +24,7 @@ bond_angle.py tracks the bond angle between three atoms during a periodic ab ini
 Here, atom1, atom2, and atom3 are the index of the atoms whose angle is being monitored, and OUTPUT.png gives the evolution of the bond angle for simulation. *XDATCAR.xlsx is the input file.
 
 
-## bond dihedral
+## dihedral angle
 dihedral_angle.py tracks the dihedral angle between four atoms during a periodic ab initio molecular dynamics simulation. The script can be run with:
 
 ```python dihedral_angle.py *XDATCAR.xlsx atom1 atom2 atom3 atom4 OUTPUT.png```
