@@ -85,7 +85,7 @@ for frames in range(number_of_frames):
     distance1 = min(min(min(periodic_distance1)))
     distance2 = min(min(min(periodic_distance2)))
     distance3 = min(min(min(periodic_distance3)))
-    angle += [math.degrees(math.acos(((distance1**2) + (distance3**2) - (distance2**2))/(2*distance1*distance3)))]
+    angle += [math.degrees(math.acos(((distance1**2) + (distance2**2) - (distance3**2))/(2*distance1*distance2)))]
     avg_angle += [sum(angle)/len(angle)]
 
 #plotting and printing output
