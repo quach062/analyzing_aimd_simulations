@@ -13,7 +13,7 @@ bond_length.py tracks the bond distance between two atoms during a periodic ab i
 
 ```python bond_length.py *XDATCAR.xlsx atom1 atom2 OUTPUT.png```
 
-Here, atom1 and atom2 are the indexes of the atoms whose bond is being monitored, and OUTPUT.png gives the evolution of the bond length for simulation. *XDATCAR.xlsx is the input file. 
+Here, atom1 and atom2 are the indexes of the atom whose bond is being monitored, and OUTPUT.png gives the evolution of the bond length for simulation. *XDATCAR.xlsx is the input file. 
 
 
 ## bond angle
@@ -41,11 +41,11 @@ Here, atom1 is the reference atom for creating the radial distribution function,
 
 
 ## volume fraction distribution
-volume_fraction_distribution gives the crowding around a reference atom      a reference atom's probability and radial distribution functions for a periodic ab initio molecular dynamics simulation. The code can be manipulated to give instantaneous and average distribution functions. The script can be run with:
+volume_fraction_distribution gives the amount of volume and the fraction of volume around a reference atom occupied by the rest of the atoms for a periodic ab initio molecular dynamics simulation. This distribution quantifies the local environemnt by treating atoms as van der Waals spheres and calculating how much volume is occupied by surrounding atoms for a reference atom as a fucntion of distance. The code gives the volume occupied and the fraction relative to the total volume. The script can be run with:
 
-```python radial_distribution_function.py *XDATCAR.xlsx atom1 frame1 grid1 OUTPUT1.png OUTPUT2.png OUTPUT3.png```
+```python volume_fraction_distribution.py *XDATCAR.xlsx atom1 grid OUTPUT.png``
 
-Here, atom1 is the reference atom for creating the radial distribution function, frame1 is the frame index for the instantaneous rdf of the particular frame, grid1 is the gridpoint size for generating the distributions, and the three OUTPUT files give instantaneous and average distribution functions. *XDATCAR.xlsx is the input file.
+Here, atom1 is the reference atom for creating the volume fraction distribution, grid is the gridpoint size for generating the distributions, and the OUTPUT file gives volume and volume fraction distributions. *XDATCAR.xlsx is the input file.
 
 
 # Authors
