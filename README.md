@@ -41,9 +41,9 @@ Here, atom1 is the reference atom for creating the radial distribution function,
 
 
 ## volume fraction distribution
-volume_fraction_distribution gives the amount of volume and the fraction of volume around a reference atom occupied by the rest of the atoms for a periodic ab initio molecular dynamics simulation. This distribution quantifies the local environemnt by treating atoms as van der Waals spheres and calculating how much volume is occupied by surrounding atoms for a reference atom as a fucntion of distance. The code gives the volume occupied and the fraction relative to the total volume. The script can be run with:
+volume_fraction_distribution gives the amount of volume and the fraction of volume around a reference atom occupied by the rest of the atoms for a periodic ab initio molecular dynamics simulation. This distribution quantifies the local environment by treating atoms as van der Waals spheres and calculating how much volume is occupied by surrounding atoms for a reference atom as a function of distance. The code gives the volume occupied and the fraction relative to the total volume. The script can be run with:
 
-```python volume_fraction_distribution.py *XDATCAR.xlsx atom1 grid OUTPUT.png``
+```python volume_fraction_distribution.py *XDATCAR.xlsx atom1 grid OUTPUT.png```
 
 Here, atom1 is the reference atom for creating the volume fraction distribution, grid is the gridpoint size for generating the distributions, and the OUTPUT file gives volume and volume fraction distributions. *XDATCAR.xlsx is the input file.
 
