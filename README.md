@@ -31,12 +31,22 @@ dihedral_angle.py tracks the dihedral angle between four atoms during a periodic
 
 Here, atom1, atom2, atom3, and atom4 are the indexes of the atoms whose dihedral angle is being monitored, and OUTPUT.png gives the evolution of the dihedral for simulation. *XDATCAR.xlsx is the input file.
 
+
 ## radial distribution function
 radial_distribution_function.py generates a reference atom's probability and radial distribution functions for a periodic ab initio molecular dynamics simulation. The code can be manipulated to give instantaneous and average distribution functions. The script can be run with:
 
 ```python radial_distribution_function.py *XDATCAR.xlsx atom1 frame1 grid1 OUTPUT1.png OUTPUT2.png OUTPUT3.png```
 
 Here, atom1 is the reference atom for creating the radial distribution function, frame1 is the frame index for the instantaneous rdf of the particular frame, grid1 is the gridpoint size for generating the distributions, and the three OUTPUT files give instantaneous and average distribution functions. *XDATCAR.xlsx is the input file.
+
+
+## volume fraction distribution
+volume_fraction_distribution gives the crowding around a reference atom      a reference atom's probability and radial distribution functions for a periodic ab initio molecular dynamics simulation. The code can be manipulated to give instantaneous and average distribution functions. The script can be run with:
+
+```python radial_distribution_function.py *XDATCAR.xlsx atom1 frame1 grid1 OUTPUT1.png OUTPUT2.png OUTPUT3.png```
+
+Here, atom1 is the reference atom for creating the radial distribution function, frame1 is the frame index for the instantaneous rdf of the particular frame, grid1 is the gridpoint size for generating the distributions, and the three OUTPUT files give instantaneous and average distribution functions. *XDATCAR.xlsx is the input file.
+
 
 # Authors
 Mayank Tanwar
