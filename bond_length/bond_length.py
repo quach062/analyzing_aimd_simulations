@@ -84,12 +84,12 @@ plt.plot(distance, color = "darkgrey")
 plt.plot(avg_distance, "lightcoral", label = "Average", linewidth = 3)
 plt.xlabel('Number of Frames')
 plt.xlim([0, number_of_frames])
-plt.ylabel(f"Bond Distance between Atom {atom_number_one + 1} and Atom {atom_number_two + 1}" +'in $\mathrm{\AA}$')
+plt.ylabel(f"Bond Distance between Atom {atom_number_one + 1} and Atom {atom_number_two + 1}" +'in ${\AA}$')
 plt.legend(loc="upper right")
 output_file = sys.argv[4]
-plt.savefig(output_file)
+plt.savefig(output_file+'.png')
 
 print(f'Avg Distance: {avg} \nStandard deviation: {std}')
 
 # Save results in text file
-np.savetxt(f"{output_file[:-4]}.txt", stats, header="Average Standard Deviation", comments='', fmt='%1.4e')
+np.savetxt(f"{output_file}.txt", stats, header="Average Standard Deviation", comments='', fmt='%1.4e')
