@@ -32,6 +32,14 @@ dihedral_angle.py tracks the dihedral angle between four atoms during a periodic
 Here, atom1, atom2, atom3, and atom4 are the indexes of the atoms whose dihedral angle is being monitored, and OUTPUT.png gives the evolution of the dihedral for simulation. *XDATCAR.xlsx is the input file.
 
 
+## H bond counter
+H_bond_counter.py tracks the number of hydrogen bonds for a reference atom for any generalized mixture of solutes and solvents during a periodic ab initio molecular dynamics simulation. The script can be run with:
+
+```python H_bond_counter.py *XDATCAR.xlsx atom1 OUTPUT.png```
+
+Here, atom1 is the reference atom whose hydrogen bonds are being tracked, and OUTPUT.png gives the evolution of these interactions for simulation. The cutoff for hydrogen bonds is set at 2 Å and for atom-hydrogen covalent bonds at 1.2 Å. *XDATCAR.xlsx is the input file.
+
+
 ## radial distribution function
 radial_distribution_function.py generates a reference atom's probability and radial distribution functions for a periodic ab initio molecular dynamics simulation. The code can be manipulated to give instantaneous and average distribution functions. The script can be run with:
 
