@@ -2,6 +2,7 @@ import pandas as pd
 import math
 import matplotlib.pyplot as plt
 import sys
+import numpy as np
 
 #*XDATCAR.xlsx file as input to the script
 input_file = sys.argv[1]
