@@ -65,9 +65,6 @@ Nhu Quach
 email: quach062@umn.edu
 GitHub: quach062
 
-Advisor: Prof. Matthew Neurock
-email: mneurock@umn.edu
-
 # Citation
 Publications relevant to the code: https://doi.org/10.1021/jacs.2c07305, https://doi.org/10.1021/jacs.4c08080
 # Acknowledgements
