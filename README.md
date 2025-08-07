@@ -61,7 +61,7 @@ process_XDATCAR filter, sort, and extract frame that were save in the XDATCAR fi
 
 This command line will filter out first 1000 time points in the excel files, the rest of the filtered data is sort by energy E0, and 20 frames with lowest energies from the XDATCAR are written as CONTCAR files in the defined directory. For more details and arguments, please see the help menu by running:
 
-``` python process_XDATCAR.py -h``` 
+```python process_XDATCAR.py -h``` 
 
 # Authors
 Mayank Tanwar
@@ -76,4 +76,5 @@ GitHub: quach062
 Publications relevant to the code: https://doi.org/10.1021/jacs.2c07305, https://doi.org/10.1021/jacs.4c08080
 # Acknowledgements
 NSF Center for Synthetic Organic Electrochemistry (https://cci.utah.edu/)
+
 
