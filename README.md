@@ -54,6 +54,14 @@ volume_fraction_distribution gives the amount of volume and the fraction of volu
 
 Here, atom1 is the reference atom for creating the volume fraction distribution, grid is the gridpoint size for generating the distributions, and the OUTPUT file gives volume and volume fraction distributions. *XDATCAR.xlsx is the input file.
 
+## frame extraction
+process_XDATCAR filter, sort, and extract frame that were save in the XDATCAR file and convert them to CONTCAR format. This code takes in XDATCAR file and a formatted excel (see example file in folder), including information about energies of each frame, which could be obtained from the OUTCAR file.  process_XDATCAR.py filter the time frame range, sort the frames based on the specified energy in the excel file (from lowest to highest), and write CONTCAR file of frames with lowest energy. The script can be run with: 
+
+```python process_XDATCAR.py --excel_file E_Pt_mixed.xlsx --xdatcar_file XDATCAR --min_time 1000 --sort_variable E0 --num_time_points 20```
+
+This command line will filter out first 1000 time points in the excel files, the rest of the filtered data is sort by energy E0, and 20 frames with lowest energies from the XDATCAR are written as CONTCAR files in the defined directory. For more details and arguments, please see the help menu by running:
+
+``` python process_XDATCAR.py -h``` 
 
 # Authors
 Mayank Tanwar
@@ -68,3 +76,4 @@ GitHub: quach062
 Publications relevant to the code: https://doi.org/10.1021/jacs.2c07305, https://doi.org/10.1021/jacs.4c08080
 # Acknowledgements
 NSF Center for Synthetic Organic Electrochemistry (https://cci.utah.edu/)
+
